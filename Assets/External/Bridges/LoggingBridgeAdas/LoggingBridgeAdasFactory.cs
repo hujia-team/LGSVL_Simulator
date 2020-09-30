@@ -14,13 +14,13 @@ namespace Simulator.Bridge
 {
     // name should match bridge plugin name (main C# file, and folder name under External/Bridges folder)
     // this will also be used to display name in UI
-    [BridgeName("LoggingBridge")]
-    public class LoggingBridgeFactory : IBridgeFactory
+    [BridgeName("LoggingBridgeAdas")]
+    public class LoggingBridgeAdasFactory : IBridgeFactory
     {
         // called to create unique instance associated with vehicle
-        public IBridgeInstance CreateInstance() => new LoggingBridgeInstance();
+        public IBridgeInstance CreateInstance() => new LoggingBridgeAdasInstance();
 
-        public LoggingBridgeFactory()
+        public LoggingBridgeAdasFactory()
         {
             jsonSettings.Formatting = Formatting.None;
             jsonSettings.Converters.Add(new UnityConverters());
@@ -65,7 +65,7 @@ namespace Simulator.Bridge
             plugin.AddPublisherCreator(
                 (instance, topic) =>
                 {
-                    var loggingInstance = instance as LoggingBridgeInstance;
+                    var loggingInstance = instance as LoggingBridgeAdasInstance;
 
                     // as we have very simple bridge that does not require "conversion", we'll just call
                     // serializer directly on simulator data types. For real bridges you would need to convert data
